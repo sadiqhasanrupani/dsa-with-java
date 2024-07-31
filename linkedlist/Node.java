@@ -1,5 +1,3 @@
-package linkedlist;
-
 class Node {
 
   // creating values, and node which will point node itself

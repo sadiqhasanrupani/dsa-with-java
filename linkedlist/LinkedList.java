@@ -1,5 +1,3 @@
-package linkedlist;
-
 class LinkedList {
 
   // creating head, tail and length
@@ -24,16 +22,21 @@ class LinkedList {
     // looping till the temp.next ==
     System.out.print("\nTotal nodes present: ");
 
-    while (temp != null) {
-      // Print the current node's value
-      System.out.print(temp.value);
-      // Move to the next node
-      temp = temp.next;
-      // Print a comma if there are more nodes
-      if (temp != null) {
-        System.out.print(",");
+    if (temp == null) {
+      System.out.print("null");
+    } else {
+      while (temp != null) {
+        // Print the current node's value
+        System.out.print(temp.value);
+        // Move to the next node
+        temp = temp.next;
+        // Print a comma if there are more nodes
+        if (temp != null) {
+          System.out.print(",");
+        }
       }
     }
+
     System.out.println();
   }
 
@@ -51,12 +54,70 @@ class LinkedList {
     length++;
   }
 
-  public void remove(int value) {
+  public Node remove() {
+    Node pre = head, temp = head;
+
     // checking the condition if head and tail only having a single node.
     if (length == 1) {
       head = null;
       tail = null;
-    } else {}
+      length = length - 1;
+
+      return null;
+    } else if (length == 0) {
+      return null;
+    } else {
+      // when their is multiple nodes present inside linkedlist.
+      // todo: create two nodes; pre and temp, which will point towards head initially
+      // todo: create a loop that will run until "temp" hits the null value.
+      // todo: inside the loop check if temp.next != null if it is true then pre = temp;
+      // todo: after the temp hits the null value, we point tail to pre's location
+      // todo: then we null the tail's next and return the temp at the end,
+      // before returning we have to -1 the length value means length - 1
+
+      while (temp.next != null) {
+        pre = temp;
+        temp = temp.next;
+      }
+
+      tail = pre;
+      tail.next = null;
+      length = length - 1;
+    }
+    return temp;
+  }
+
+  public void prepend(int value) {
+    // create node and set it to the value.
+    Node newNode = new Node(value);
+
+    if (length == 0) { // head and tail is equal to null
+      head = newNode;
+      tail = newNode;
+    } else {
+      newNode.next = head;
+      head = newNode;
+    }
+
+    length++;
+  }
+
+  public Node removeFirst() {
+    if (length == 0) return null;
+
+    if (length == 1) {
+      head = null;
+      tail = null;
+
+      length--;
+      return null;
+    }
+
+    Node temp = head;
+    head = temp.next;
+
+    length--;
+    return temp;
   }
 
   public void getHead() {
