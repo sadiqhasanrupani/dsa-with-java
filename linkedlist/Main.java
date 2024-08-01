@@ -26,7 +26,6 @@ class Main {
 
     printResults(linkedList);
 
-    System.out.println();
     System.out.println(linkedList.removeFirst());
     System.out.println(linkedList.removeFirst());
 
