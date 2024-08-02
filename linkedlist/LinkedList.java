@@ -54,16 +54,16 @@ class LinkedList {
     length++;
   }
 
-  public Node remove() {
+  public Node removeLast() {
     Node pre = head, temp = head;
 
     // checking the condition if head and tail only having a single node.
     if (length == 1) {
       head = null;
       tail = null;
-      length = length - 1;
+      length = 0;
 
-      return null;
+      return temp;
     } else if (length == 0) {
       return null;
     } else {
@@ -108,13 +108,85 @@ class LinkedList {
     if (length == 1) {
       head = null;
       tail = null;
+      length = 0;
 
-      length--;
       return null;
     }
 
     Node temp = head;
     head = temp.next;
+    temp.next = null;
+
+    length--;
+    return temp;
+  }
+
+  public Node get(int index) {
+    if (index < 0 || index > length) return null;
+
+    Node temp = head;
+    for (int i = 0; i < index; i++) {
+      temp = temp.next;
+    }
+    return temp;
+  }
+
+  public boolean set(int index, int value) {
+    Node temp = get(index);
+
+    if (temp != null) {
+      temp.value = value;
+      return true;
+    }
+    return false;
+  }
+
+  public boolean insert(int index, int value) {
+    // check index is out of bound?
+    if (index < 0 || index > length) return false;
+
+    if (index == 0) {
+      prepend(value);
+      return true;
+    }
+
+    if (index == length) {
+      append(value);
+      return true;
+    }
+
+    // create new node to point the temp.next value to new node
+    Node newNode = new Node(value);
+
+    // if the node want to insert in between the nodes of linkedlist
+    // then first create temp variable which holds the value of node's given index--
+    Node temp = get(index - 1);
+    // and connecting the previous node after the new node next node
+    newNode.next = temp.next;
+
+    // and connecting the temp next to new node to connect overall list.
+    temp.next = newNode;
+    length++;
+    return true;
+  }
+
+  public Node remove(int index) {
+    if (index < 0 || index > length) return null;
+
+    if (index == 0) {
+      return removeFirst();
+    }
+
+    if (index == length) {
+      return removeLast();
+    }
+
+    Node prev = get(index - 1);
+    Node temp = prev.next;
+
+    // removing desired node
+    prev.next = temp.next;
+    temp.next = null;
 
     length--;
     return temp;

@@ -17,8 +17,8 @@ class Main {
     printResults(linkedList);
 
     System.out.println();
-    System.out.println(linkedList.remove());
-    System.out.println(linkedList.remove());
+    System.out.println(linkedList.removeLast());
+    System.out.println(linkedList.removeLast());
 
     printResults(linkedList);
 
@@ -27,7 +27,28 @@ class Main {
     printResults(linkedList);
 
     System.out.println(linkedList.removeFirst());
-    System.out.println(linkedList.removeFirst());
+
+    printResults(linkedList);
+
+    System.out.println(
+      "\nThe value on index " + 2 + " is " + linkedList.get(2).value
+    );
+
+    int[] appendlists = { 54, 23, 34 };
+    int[] prependLists = { 5, 12, 314 };
+
+    for (int i = 0; i < 3; i++) {
+      linkedList.append(appendlists[i]);
+      linkedList.append(prependLists[i]);
+    }
+
+    linkedList.set(2, 120);
+    printResults(linkedList);
+    linkedList.insert(2, 20);
+    printResults(linkedList);
+
+    System.out.println();
+    System.out.println(linkedList.remove(4));
 
     printResults(linkedList);
   }
