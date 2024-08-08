@@ -26,5 +26,11 @@ class Main {
 
     System.out.println(list1.insert(3, 65));
     list1.printLists();
+
+    System.out.println(list1.set(4, 786));
+    list1.printLists();
+
+    System.out.println(list1.remove(4));
+    list1.printLists();
   }
 }
