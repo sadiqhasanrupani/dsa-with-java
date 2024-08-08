@@ -122,12 +122,17 @@ class LinkedList {
   }
 
   public Node get(int index) {
-    if (index < 0 || index > length) return null;
+    if (index < 0 || index >= length) return null;
+
+    if (index == 0) return head;
+
+    if (index == length) return tail;
 
     Node temp = head;
     for (int i = 0; i < index; i++) {
       temp = temp.next;
     }
+
     return temp;
   }
 
