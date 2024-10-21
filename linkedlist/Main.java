@@ -6,7 +6,8 @@ class Main {
   }
 
   public static void main(String[] args) {
-    //^ creating a Node of value 4.
+    // creating a Node of value 4.
+
     LinkedList linkedList = new LinkedList(4);
     // appending linkedlist
     linkedList.append(23);
@@ -31,8 +32,7 @@ class Main {
     printResults(linkedList);
 
     System.out.println(
-      "\nThe value on index " + 2 + " is " + linkedList.get(2).value
-    );
+        "\nThe value on index " + 2 + " is " + linkedList.get(2).value);
 
     int[] appendlists = { 54, 23, 34 };
     int[] prependLists = { 5, 12, 314 };
@@ -51,5 +51,16 @@ class Main {
     System.out.println(linkedList.remove(4));
 
     printResults(linkedList);
+
+    linkedList.append(20);
+    linkedList.append(30);
+    linkedList.append(40);
+    linkedList.append(50);
+
+    printResults(linkedList);
+
+    linkedList.reverse();
+    printResults(linkedList);
   }
+
 }

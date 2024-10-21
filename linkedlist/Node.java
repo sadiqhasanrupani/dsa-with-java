@@ -4,7 +4,7 @@ class Node {
   int value;
   Node next;
 
-  // initailizing constructor
+  // initializing constructor
   public Node(int value) {
     this.value = value;
   }

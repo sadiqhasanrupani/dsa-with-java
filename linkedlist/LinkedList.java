@@ -9,6 +9,7 @@ class LinkedList {
   public LinkedList(int value) {
     // creating a new node
     Node newNode = new Node(value);
+
     // pointing the new node to head and tail and setting length to 1
     // at the initial stage.
     head = newNode;
@@ -70,7 +71,8 @@ class LinkedList {
       // when their is multiple nodes present inside linkedlist.
       // todo: create two nodes; pre and temp, which will point towards head initially
       // todo: create a loop that will run until "temp" hits the null value.
-      // todo: inside the loop check if temp.next != null if it is true then pre = temp;
+      // todo: inside the loop check if temp.next != null if it is true then pre =
+      // temp;
       // todo: after the temp hits the null value, we point tail to pre's location
       // todo: then we null the tail's next and return the temp at the end,
       // before returning we have to -1 the length value means length - 1
@@ -103,7 +105,8 @@ class LinkedList {
   }
 
   public Node removeFirst() {
-    if (length == 0) return null;
+    if (length == 0)
+      return null;
 
     if (length == 1) {
       head = null;
@@ -122,11 +125,14 @@ class LinkedList {
   }
 
   public Node get(int index) {
-    if (index < 0 || index >= length) return null;
+    if (index < 0 || index >= length)
+      return null;
 
-    if (index == 0) return head;
+    if (index == 0)
+      return head;
 
-    if (index == length) return tail;
+    if (index == length)
+      return tail;
 
     Node temp = head;
     for (int i = 0; i < index; i++) {
@@ -148,7 +154,8 @@ class LinkedList {
 
   public boolean insert(int index, int value) {
     // check index is out of bound?
-    if (index < 0 || index > length) return false;
+    if (index < 0 || index > length)
+      return false;
 
     if (index == 0) {
       prepend(value);
@@ -176,7 +183,8 @@ class LinkedList {
   }
 
   public Node remove(int index) {
-    if (index < 0 || index > length) return null;
+    if (index < 0 || index > length)
+      return null;
 
     if (index == 0) {
       return removeFirst();
@@ -207,5 +215,21 @@ class LinkedList {
 
   public void getLength() {
     System.out.println("Length: " + length);
+  }
+
+  public void reverse() {
+    Node temp = head;
+    head = tail;
+    tail = temp;
+
+    Node after = temp.next;
+    Node before = null;
+
+    for (int i = 0; i < length; i++) {
+      after = temp.next;
+      temp.next = before;
+      before = temp;
+      temp = after;
+    }
   }
 }
